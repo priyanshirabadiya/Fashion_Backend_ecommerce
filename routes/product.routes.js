@@ -31,7 +31,5 @@ routes.get('/allcart', verifyToken, getAllCarts);
 
 routes.delete('/deletecart', verifyToken, deleteCart);
 
-
-
 module.exports = routes;
 

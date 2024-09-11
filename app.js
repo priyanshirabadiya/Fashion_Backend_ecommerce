@@ -28,5 +28,3 @@ server.listen(port, () => {
         .catch((err) => console.log(err))
     console.log(`Server Start At http://localhost:${port}`)
 })
-
-

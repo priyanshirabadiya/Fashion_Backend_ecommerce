@@ -10,7 +10,7 @@ const {
     updatePassword,
     getAllUsers
 } = require('../controller/user.controller');
-const { verifyToken } = require('../helpers/verifyToken')
+const { verifyToken } = require('../helpers/verifyToken');
 
 userRoutes.post('/register', registerUser);
 
