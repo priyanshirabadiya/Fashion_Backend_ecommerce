@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-const server = express();
+const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require("mongoose");
@@ -8,9 +8,9 @@ const userRoutes = require('./routes/user.routes');
 const productRoutes = require('./routes/product.routes');
 const port = process.env.PORT;
 
-server.use(morgan('dev'));
-server.use(express.json());
-server.use(express.urlencoded({ extended: false }));
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cors({
     origin: '*', // Or specify your frontend's URL for better security
     methods: 'GET,POST,PUT,DELETE',
@@ -18,19 +18,21 @@ app.use(cors({
     credentials: true,
 }));
 
-server.get('/', (req, res) => {
-    res.send("Welcome To Express backend-ecommerce Server...");
+app.get('/', (req, res) => {
+    res.send("Welcome To Express backend-ecommerce server...");
 })
 
-server.use("/user", userRoutes);
+app.use("/user", userRoutes);
 
-server.use("/product" , productRoutes);
+app.use("/product" , productRoutes);
 
-server.listen(port, '0.0.0.0', () => {
+app.listen(port, '0.0.0.0', () => {
     mongoose.connect(process.env.MONGO_URI)
         .then(() => {
             console.log("Database connection established successfully")
         })
         .catch((err) => console.log(err))
-    console.log(`Server Start At http://localhost:${port}`)
+    console.log(`app Start At http://localhost:${port}`)
 })
+
+module.exports = app;
