@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
+const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require("mongoose");
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 
 app.use("/user", userRoutes);
 
-app.use("/product" , productRoutes);
+app.use("/product", productRoutes);
 
 app.listen(port, '0.0.0.0', () => {
     mongoose.connect(process.env.MONGO_URI)
