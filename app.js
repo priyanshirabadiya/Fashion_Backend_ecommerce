@@ -20,11 +20,11 @@ server.use("/user", userRoutes);
 
 server.use("/product" , productRoutes);
 
-server.listen(port, () => {
+server.listen(port, '0.0.0.0', () => {
     mongoose.connect(process.env.MONGO_URI)
         .then(() => {
-            console.log("Database connection established  successfully")
+            console.log("Database connection established successfully")
         })
         .catch((err) => console.log(err))
-    console.log(`Server Start At http://localhost:${port}`)
+    console.log(`Server Start At http://0.0.0.0:${port}`)
 })
