@@ -13,7 +13,7 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
 server.get('/', (req, res) => {
-    res.send("Welcome To Express Server...");
+    res.send("Welcome To Express backend-ecommerce Server...");
 })
 
 server.use("/user", userRoutes);
@@ -26,5 +26,5 @@ server.listen(port, '0.0.0.0', () => {
             console.log("Database connection established successfully")
         })
         .catch((err) => console.log(err))
-    console.log(`Server Start At http://0.0.0.0:${port}`)
+    console.log(`Server Start At http://localhost:${port}`)
 })
